@@ -1,7 +1,7 @@
 import random
 import string
 
-from todo.models import Todo
+from todo.models import ToDo
 
 
 class GeneratorUuid():
@@ -12,7 +12,7 @@ class GeneratorUuid():
         ))
 
     def check(self, code):
-        return Todo.objects.filter(uuid=code).exists()
+        return ToDo.objects.filter(uuid=code).exists()
 
     def created(self):
         generated = self.generate()

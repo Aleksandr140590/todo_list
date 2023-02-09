@@ -1,18 +1,18 @@
 from rest_framework import serializers
 
-from todo.models import Todo
+from todo.models import ToDo
 
 
-class CreateTodoSerializer(serializers.ModelSerializer):
+class CreateToDoSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = ('text', 'uuid')
         read_only_fields = ('uuid', 'created', 'active')
-        model = Todo
+        model = ToDo
 
 
-class TodoSerializer(serializers.ModelSerializer):
+class ToDoSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Todo
+        model = ToDo
         fields = '__all__'

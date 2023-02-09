@@ -1,7 +1,8 @@
 from django.db import models
 
 
-class Todo(models.Model):
+class ToDo(models.Model):
+    """Модель ToDo"""
     uuid = models.CharField(max_length=8,
                             unique=True)
     created = models.DateField(auto_now_add=True)

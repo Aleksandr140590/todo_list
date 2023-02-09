@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 
-class TodoAdmin(admin.ModelAdmin):
+class ToDoAdmin(admin.ModelAdmin):
+
     list_display = '__all__'
     search_fields = ('text',)
     list_filter = ('text',)
