@@ -4,7 +4,7 @@ from todo.models import ToDo
 
 
 class CreateToDoSerializer(serializers.ModelSerializer):
-
+    """Сериализатор при создании объекта."""
     class Meta:
         fields = ('text', 'uuid')
         read_only_fields = ('uuid', 'created', 'active')
@@ -12,7 +12,7 @@ class CreateToDoSerializer(serializers.ModelSerializer):
 
 
 class ToDoSerializer(serializers.ModelSerializer):
-
+    """Сериализатор GET запросов."""
     class Meta:
         model = ToDo
         fields = '__all__'

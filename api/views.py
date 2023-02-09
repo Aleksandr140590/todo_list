@@ -14,6 +14,7 @@ generator = GeneratorUuid()
 
 @api_view(["POST"])
 def create_todo(request):
+    """Создание объекта через POST запрос."""
     serializer = CreateToDoSerializer(data=request.data)
     serializer.is_valid()
     serializer.save(uuid=generator.created())
@@ -22,6 +23,7 @@ def create_todo(request):
 
 @api_view(["GET"])
 def get_todo(request):
+    """Вывод объекта по uuid."""
     uuid = request.GET['uuid']
     if ToDo.objects.filter(uuid=uuid).exists():
         serializer = ToDoSerializer(ToDo.objects.get(uuid=uuid))
@@ -31,6 +33,7 @@ def get_todo(request):
 
 @api_view(["GET"])
 def get_all_todo(request):
+    """Вывод всех объектов Todo."""
     queryset = ToDo.objects.all()
     serializer = ToDo(queryset, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
@@ -38,6 +41,7 @@ def get_all_todo(request):
 
 @api_view(["DELETE"])
 def delete_todo(request):
+    """Удаление объекта."""
     uuid = request.GET['uuid']
     if ToDo.objects.filter(uuid=uuid).exists():
         ToDo.objects.get(uuid=uuid).delete()
@@ -47,6 +51,7 @@ def delete_todo(request):
 
 @api_view(["GET"])
 def list_todo(request):
+    """Получение списка объектов в интервале дат."""
     if 'start' in request.GET and 'end' in request.GET:
         if not validate_date(
                 request.GET['start']
